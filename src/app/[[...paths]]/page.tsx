@@ -6,6 +6,7 @@ import templates from "@/templates";
 
 export default async function PageRoute(props: {
   params: Promise<{ paths: string[] }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const searchParams = await props.searchParams;
   const params = await props.params;

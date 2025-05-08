@@ -6,7 +6,9 @@ export interface Post {
   /**
    * The ID for the author of the post.
    */
-  author: number;
+  author: {
+    role: string;
+  };
   /**
    * The terms assigned to the post in the category taxonomy.
    */
@@ -69,16 +71,16 @@ export interface Post {
    * The format for the post.
    */
   format:
-    | "standard"
-    | "aside"
-    | "chat"
-    | "gallery"
-    | "link"
-    | "image"
-    | "quote"
-    | "status"
-    | "video"
-    | "audio";
+  | "standard"
+  | "aside"
+  | "chat"
+  | "gallery"
+  | "link"
+  | "image"
+  | "quote"
+  | "status"
+  | "video"
+  | "audio";
   /**
    * Slug automatically generated from the post title.
    */
@@ -138,12 +140,12 @@ export interface Post {
    * A named status for the post.
    */
   status:
-    | "publish"
-    | "future"
-    | "draft"
-    | "pending"
-    | "private"
-    | "acf-disabled";
+  | "publish"
+  | "future"
+  | "draft"
+  | "pending"
+  | "private"
+  | "acf-disabled";
   /**
    * Whether or not the post should be treated as sticky.
    */
@@ -173,4 +175,17 @@ export interface Post {
    * Type of post.
    */
   type: string;
+  _embedded?: {
+    author?: Array<{
+      name: string;
+      link: string;
+      avatar_urls: {
+        "96": string;
+      };
+    }>;
+    "wp:term"?: Array<Array<{
+      name: string;
+      link: string;
+    }>>;
+  };
 }

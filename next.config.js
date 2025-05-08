@@ -6,6 +6,7 @@ const wpBaseUrl = process.env.NEXT_PUBLIC_WP_URL?.replace(
 )?.replace("http://", "");
 
 const nextConfig = {
+  transpilePackages: ["@nextwp/core"],
   images: {
     remotePatterns: [
       {

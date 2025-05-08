@@ -13,8 +13,22 @@ interface PageData extends WpPage {
 }
 
 export function DefaultPageTemplate({ data }: DefaultTemplateProps) {
-  if (!data.acf?.modules) {
-    return null;
-  }
-  return <FlexibleContent blocks={blocks} rows={data.acf.modules} />;
+  console.log('Page Data:', data);
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">
+        {typeof data.title === 'string'
+          ? data.title
+          : data.title?.rendered || 'Untitled'}
+      </h1>
+      {data.content && (
+        <div
+          className="prose max-w-none"
+          dangerouslySetInnerHTML={{ __html: data.content.rendered || '' }}
+        />
+      )}
+      {/* {data.acf?.modules && <FlexibleContent blocks={blocks} rows={data.acf.modules} />} */}
+    </div>
+  );
 }

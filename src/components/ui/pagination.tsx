@@ -19,7 +19,6 @@ Pagination.displayName = "Pagination";
 const PaginationContent = React.forwardRef<
   HTMLUListElement,
   React.ComponentProps<"ul">
-  // @ts-expect-error -- false positive for Element return type
 >(({ className, ...props }, ref) => {
   return (
     <ul
@@ -34,7 +33,6 @@ PaginationContent.displayName = "PaginationContent";
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
-  // @ts-expect-error -- false positive for Element return type
 >(({ className, ...props }, ref) => {
   return <li className={cn("", className)} ref={ref} {...props} />;
 });
@@ -69,9 +67,8 @@ function PaginationLink({
 PaginationLink.displayName = "PaginationLink";
 
 function PaginationPrevious({
-  // @ts-expect-error -- false positive for PaginationLink
   className,
-  ...props // @ts-expect-error -- false positive for PaginationLink
+  ...props
 }: React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink
@@ -88,11 +85,10 @@ function PaginationPrevious({
 PaginationPrevious.displayName = "PaginationPrevious";
 
 function PaginationNext({
-  // @ts-expect-error -- false positive for PaginationLink
   className,
   ...props
-} // @ts-expect-error -- false positive for PaginationLink
-: React.ComponentProps<typeof PaginationLink>) {
+}
+  : React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink
       aria-label="Go to next page"

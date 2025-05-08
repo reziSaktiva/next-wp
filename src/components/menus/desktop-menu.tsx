@@ -21,7 +21,7 @@ export function DesktopMenu({
   return (
     <nav className={cn("flex space-x-4", className)}>
       {menuItems?.map((menuItem) => {
-        if (menuItem?.childItems?.length > 0) {
+        if (menuItem?.childItems && menuItem.childItems.length > 0) {
           return (
             <DropdownMenu key={menuItem.id}>
               <DropdownMenuTrigger className="inline-flex items-center gap-x-1">
@@ -35,7 +35,7 @@ export function DesktopMenu({
                     <DropdownMenuItem asChild key={childItem.id}>
                       <Link
                         className="hover:cursor-pointer"
-                        href={childItem.path}
+                        href={childItem.path || ""}
                       >
                         {childItem.label}
                       </Link>
@@ -48,7 +48,7 @@ export function DesktopMenu({
         }
 
         return (
-          <Link href={menuItem.path} key={menuItem.id}>
+          <Link href={menuItem.path || ""} key={menuItem.id}>
             {menuItem.label}
           </Link>
         );

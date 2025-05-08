@@ -1,4 +1,6 @@
-export function ContactPageTemplate(props) {
+import { TemplateProps } from "@nextwp/core";
+
+export function ContactPageTemplate(props: TemplateProps) {
   return (
     <div>
       <h1>Contact page template</h1>

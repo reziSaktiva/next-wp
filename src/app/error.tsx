@@ -17,7 +17,7 @@ export default function Error({
 
   // Function to replace URLs with anchor tags
   const renderTextWithLinks = (text: string) => {
-    const urlRegex = /(?<temp1>https?:\/\/[^\s]+)/g;
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(
       urlRegex,
       (url) =>
