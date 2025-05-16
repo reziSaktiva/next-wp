@@ -11,7 +11,13 @@ export interface HeroProps {
   subline: string;
   links?: {
     link: WpLink;
-    variant: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+    variant:
+      | "default"
+      | "destructive"
+      | "outline"
+      | "secondary"
+      | "ghost"
+      | "link";
   }[];
 }
 
@@ -43,24 +49,19 @@ export function Hero(props: HeroProps) {
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start sm:space-x-4 space-y-2 sm:space-y-0">
             {links
               ? links.map(({ link, variant }, index) => {
-                return (
-                  <Button
-                    asChild
-                    key={index}
-                    size="lg"
-                    variant={variant}
-                  >
-                    <Link href={link.url || ""} target={link.target}>
-                      {link.title}
-                    </Link>
-                  </Button>
-                );
-              })
+                  return (
+                    <Button asChild key={index} size="lg" variant={variant}>
+                      <Link href={link.url || ""} target={link.target}>
+                        {link.title}
+                      </Link>
+                    </Button>
+                  );
+                })
               : null}
           </div>
         </div>
       </div>
-      <div className="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+      {/* <div className="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
         {image ? (
           <Image
             alt={image.alt || ""}
@@ -70,7 +71,7 @@ export function Hero(props: HeroProps) {
             width={image.width}
           />
         ) : null}
-      </div>
+      </div> */}
     </section>
   );
 }

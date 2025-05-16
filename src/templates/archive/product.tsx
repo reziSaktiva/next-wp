@@ -51,7 +51,7 @@ export function ProductArchive(props: ArchivePage) {
               </div>
               <div className="max-w-xl">
                 <div className="mt-8 flex items-center gap-x-4 text-xs">
-                  <time className="text-gray-500" dateTime={item.datetime}>
+                  <time className="text-gray-500" dateTime={item.date}>
                     {item.date}
                   </time>
 

@@ -1,34 +1,20 @@
-import { FlexibleContent } from "@nextwp/core";
-import type { WpPage, TemplateProps } from "@nextwp/core";
-import * as blocks from "../../components/blocks";
+import { FlexibleContent, type WpPage } from "@nextwp/core";
+import * as blocks from "@/components/blocks";
 
-interface DefaultTemplateProps extends TemplateProps {
-  data: PageData;
-}
+import { type HeroProps } from "@/components/blocks/hero";
+import { type TextareaProps } from "@/components/blocks/textarea";
 
+type Block = HeroProps | TextareaProps;
 interface PageData extends WpPage {
   acf?: {
-    modules?: any[];
+    modules?: Block[];
   };
 }
 
-export function DefaultPageTemplate({ data }: DefaultTemplateProps) {
-  console.log('Page Data:', data);
+export function DefaultPageTemplate({ data }: { data: PageData }) {
+  console.log("Full page data:", data);
+  console.log("ACF data:", data?.acf);
+  console.log("Modules:", data?.acf?.modules);
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">
-        {typeof data.title === 'string'
-          ? data.title
-          : data.title?.rendered || 'Untitled'}
-      </h1>
-      {data.content && (
-        <div
-          className="prose max-w-none"
-          dangerouslySetInnerHTML={{ __html: data.content.rendered || '' }}
-        />
-      )}
-      {/* {data.acf?.modules && <FlexibleContent blocks={blocks} rows={data.acf.modules} />} */}
-    </div>
-  );
+  return <FlexibleContent rows={data?.acf?.modules as any} blocks={blocks} />;
 }

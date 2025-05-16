@@ -88,13 +88,17 @@ export function PostArchive(props: BlogArchive) {
                   />
                 </div>
                 <div className="relative mt-8 flex items-center gap-x-4">
-                  <Link href={stripWpUrl(post?._embedded?.author?.[0].link || "")}>
+                  <Link
+                    href={stripWpUrl(post?._embedded?.author?.[0].link || "")}
+                  >
                     <Image
                       alt=""
                       className="h-10 w-10 rounded-full bg-gray-100"
                       height={40}
                       quality={100}
-                      src={post?._embedded?.author?.[0]?.avatar_urls?.["96"] || ""}
+                      src={
+                        post?._embedded?.author?.[0]?.avatar_urls?.["96"] || ""
+                      }
                       width={40}
                     />
                     <div className="text-sm leading-6">
