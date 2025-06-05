@@ -8,6 +8,10 @@ interface DefaultPostTemplateProps {
 }
 
 export function DefaultPostTemplate({ uri, data }: DefaultPostTemplateProps) {
+  console.log("Full post data:", data);
+  console.log("ACF data:", data?.acf);
+  console.log("Modules:", data?.acf?.modules);
+
   return (
     <Edges className="mx-auto max-w-7xl overflow-hidden py-8 px-6 lg:px-8">
       <h1>{uri}</h1>
